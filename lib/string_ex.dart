@@ -2,7 +2,12 @@ extension StringOpEx on String? {
   bool get isNullOrEmpty => this == null || this!.isEmpty;
 }
 
-extension StringEx on String {}
+extension StringEx on String {
+  String capitalize() {
+    if (isEmpty) return this;
+    return this[0].toUpperCase() + substring(1).toLowerCase();
+  }
+}
 
 extension IntEx on int {
   Map<String, int> parseDuration() {
