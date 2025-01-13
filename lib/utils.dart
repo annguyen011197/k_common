@@ -15,3 +15,12 @@ extension Let<T> on T {
     return block(this);
   }
 }
+
+extension Cast<T> on dynamic {
+  T? as<T>() {
+    if (this is T) {
+      return this as T;
+    }
+    return null;
+  }
+}
