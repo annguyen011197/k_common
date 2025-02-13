@@ -24,3 +24,23 @@ extension Cast<T> on dynamic {
     return null;
   }
 }
+
+extension DateTimeExtension on DateTime {
+  String toFormattedDate() {
+    return '${'${day}'.padLeft(2, '0')}/${'${month}'.padLeft(2, '0')}/$year';
+  }
+
+  String toFormatedTime() {
+    return '${'${hour}'.padLeft(2, '0')}:${'${minute}'.padLeft(2, '0')}:${'${second}'.padLeft(2, '0')}';
+  }
+}
+
+extension DurationExtension on Duration {
+  String toHHMMSS() {
+    String twoDigits(int n) => n.toString().padLeft(2, '0');
+    final hours = twoDigits(inHours);
+    final minutes = twoDigits(inMinutes.remainder(60));
+    final seconds = twoDigits(inSeconds.remainder(60));
+    return "$hours:$minutes:$seconds";
+  }
+}
