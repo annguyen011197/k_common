@@ -23,3 +23,22 @@ class GradientMaskImage extends StatelessWidget {
     );
   }
 }
+
+class ColorMaskImage extends StatelessWidget {
+  final Widget child;
+  final Color color;
+  final BlendMode blendMode;
+
+  const ColorMaskImage({
+    super.key,
+    required this.child,
+    required this.color,
+    this.blendMode = BlendMode.srcIn,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ColorFiltered(
+        colorFilter: ColorFilter.mode(color, blendMode), child: child);
+  }
+}
