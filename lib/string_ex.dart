@@ -23,6 +23,11 @@ extension StringEx on String {
   }
 
   String get lastPathWithoutExtension => lastPath.removeExtension;
+
+  String get extension {
+    final lastDot = lastIndexOf('.');
+    return lastDot != -1 ? substring(lastDot + 1) : '';
+  }
 }
 
 class StringsUtils {
