@@ -271,4 +271,13 @@ extension FutureEither<L, R> on Future<Either<L, R>> {
   /// Swap [Left] and [Right]
   Future<Either<R, L>> swap() =>
       this.fold<Either<R, L>>((left) => Right(left), (right) => Left(right));
+
+  Future<Either> onRight(void Function(R right) action) =>
+      this.then((either) {
+        if (either.isRight) {
+          action(either.right);
+        }
+        return either;
+      });
+
 }
