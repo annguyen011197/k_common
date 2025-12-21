@@ -3,6 +3,16 @@ class SafeCast {
     return value is String ? value : null;
   }
 
+  static String castString(dynamic value) {
+    if (value is String) {
+      return value;
+    }
+    if (value != null) {
+      return value.toString();
+    }
+    return "";
+  }
+
   static String asStringOr(dynamic value, String defaultValue) {
     return value is String ? value : defaultValue;
   }

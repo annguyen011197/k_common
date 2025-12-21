@@ -16,7 +16,9 @@ class DisposeBag {
   /// Adds multiple StreamSubscriptions to the dispose bag
   void addAll(Iterable<StreamSubscription> subscriptions) {
     if (_isDisposed) {
-      subscriptions.forEach((subscription) => subscription.cancel());
+      for (var subscription in subscriptions) {
+        subscription.cancel();
+      }
       throw StateError('DisposeBag has already been disposed');
     }
     _subscriptions.addAll(subscriptions);

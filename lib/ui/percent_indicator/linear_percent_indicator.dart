@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 enum LinearStrokeCap { butt, round, roundAll }
 
 extension ExtDouble on double {
-  bool get isZero => this.toString() == '0.0';
+  bool get isZero => toString() == '0.0';
 }
 
 // ignore: must_be_immutable
@@ -104,7 +104,7 @@ class LinearPercentIndicator extends StatefulWidget {
   final Function(double value)? onPercentValue;
 
   LinearPercentIndicator({
-    Key? key,
+    super.key,
     this.fillColor = Colors.transparent,
     this.percent = 0.0,
     this.lineHeight = 5.0,
@@ -134,7 +134,7 @@ class LinearPercentIndicator extends StatefulWidget {
     this.widgetIndicator,
     this.progressBorderColor,
     this.onPercentValue,
-  }) : super(key: key) {
+  }) {
     if (linearGradient != null && progressColor != null) {
       throw ArgumentError(
           'Cannot provide both linearGradient and progressColor');
@@ -145,10 +145,10 @@ class LinearPercentIndicator extends StatefulWidget {
       throw ArgumentError(
           'Cannot provide both linearGradientBackgroundColor and backgroundColor');
     }
-    _backgroundColor = backgroundColor ?? Color(0xFFB8C7CB);
+    _backgroundColor = backgroundColor ?? const Color(0xFFB8C7CB);
 
     if (percent < 0.0 || percent > 1.0) {
-      throw new Exception(
+      throw Exception(
           "Percent value must be a double between 0.0 and 1.0, but it's $percent");
     }
   }
@@ -343,9 +343,9 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
 }
 
 class _LinearPainter extends CustomPainter {
-  final Paint _paintBackground = new Paint();
-  final Paint _paintLine = new Paint();
-  final Paint _paintLineBorder = new Paint();
+  final Paint _paintBackground = Paint();
+  final Paint _paintLine = Paint();
+  final Paint _paintLineBorder = Paint();
   final double progress;
   final bool isRTL;
   final Color progressColor;

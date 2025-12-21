@@ -113,7 +113,7 @@ class CircularPercentIndicator extends StatefulWidget {
   final Function(double value)? onPercentValue;
 
   CircularPercentIndicator({
-    Key? key,
+    super.key,
     this.percent = 0.0,
     this.lineWidth = 5.0,
     this.startAngle = 0.0,
@@ -144,7 +144,7 @@ class CircularPercentIndicator extends StatefulWidget {
     this.rotateLinearGradient = false,
     this.progressBorderColor,
     this.onPercentValue,
-  }) : super(key: key) {
+  }) {
     if (linearGradient != null && progressColor != null) {
       throw ArgumentError(
           'Cannot provide both linearGradient and progressColor');
@@ -257,7 +257,7 @@ class _CircularPercentIndicatorState extends State<CircularPercentIndicator>
       items.add(widget.header!);
     }
     items.add(
-      Container(
+      SizedBox(
         height: _diameter,
         width: _diameter,
         child: Stack(
@@ -294,7 +294,7 @@ class _CircularPercentIndicatorState extends State<CircularPercentIndicator>
                         child: widget.center,
                       ),
                     ))
-                  : SizedBox.expand(),
+                  : const SizedBox.expand(),
             ),
             if (widget.widgetIndicator != null && widget.animation)
               Positioned.fill(
@@ -353,7 +353,7 @@ class _CircularPercentIndicatorState extends State<CircularPercentIndicator>
       }
       return radians(angle + margin * fixedPercent).toDouble();
     } else {
-      final angle = 360;
+      const angle = 360;
       return radians((widget.reverse ? -angle : angle) * _percent).toDouble();
     }
   }

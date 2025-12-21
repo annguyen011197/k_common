@@ -16,13 +16,13 @@ class AutoFitGrid extends StatelessWidget {
   /// [padding] - Padding around the entire grid
   /// [children] - The grid items
   const AutoFitGrid({
-    Key? key,
+    super.key,
     required this.children,
     this.crossAxisCount = 2,
     this.rows,
     this.spacing = 8.0,
     this.padding,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
